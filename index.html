@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="style.css">
         <title>My Portfolio</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <section id="about">
@@ -14,7 +16,7 @@
                 <div class="about-text">
                     <h1>About Me</h1>
                     <p>
-                        Hello! I'm Zunrah Robinson, or Zay for short. I'm an aspiring front-end developer passionate about creating
+                        Hello! I'm aaaaaaaa, or Zay for short. I'm an aspiring front-end developer passionate about creating
                         beautiful and interactive web experiences.
                     </p>
 
@@ -22,7 +24,80 @@
             </div>
             </div>
         </section>
+        <section id="skills">
+            <div class="skills-container">
+                <h2>Skills</h2>
 
+                <div class="skills-grid">
+                    <div class="skill-card html" data-skill="HTML">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+                    </div>
+
+                    <div class="skill-card css" data-skill="CSS">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+                    </div>
+
+                    <div class="skill-card js" data-skill="JavaScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+                    </div>
+
+                    <div class="skill-card git" data-skill="Git">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <div class="projects-container">
+                <h2>Projects</h2>
+
+                 <div class="projects-grid">
+                    <div class="project-card" id="ari-card">
+                        <span class="project-status">In Progress</span>
+
+                        <h3>AI Companion</h3>
+
+                        <p>
+                            A desktop AI companion with personality-driven interactions, custom responses,
+                            and a growing emotional behavior system.
+                        </p>
+
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>Electron</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-modal" id="ari-modal">
+                <div class="modal-content">
+                    <button class="close-modal" type="button">
+                        <img src="assets/images/x_button.png" alt="Close project details">
+                    </button>
+
+                    <h2>Ari The AI Companion</h2>
+
+                    <div class="project-preview">
+                        <img src="assets/images/ari-preview.png" alt="Preview of Ari The AI Companion">
+                    </div>
+                    <p>
+                        Ari is a desktop AI companion built with JavaScript, Electron, and Node.js.
+                        The project is currently in progress, with a focus on personality-driven interactions,
+                        custom responses, and an emotional behavior system. The goal is to create a unique and engaging
+                        AI companion that can provide a personalized experience for the user.
+                    </p>
+
+                    <a class="github-paw-link" href="https://github.com/zahara-robinson/Ai-Companion.git" target="_blank">
+                        <img src="assets/images/Github_link.png" alt="Github Link">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+        <script src="script.js"></script>
 
     </body>
 </html>
