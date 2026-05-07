@@ -265,6 +265,7 @@ h2 {
 
 .project-card {
     position: relative;
+
     width: min(360px, 90%);
     min-height: 260px;
     padding: 35px;
@@ -278,10 +279,46 @@ h2 {
 
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
+
+    transition: 
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease,
+        background 0.35s ease;
+
+    cursor: pointer;
+    overflow: hidden;
+        
 }
 
 .project-card:hover {
-    transform: translate(-8px) scale(1.03);
+    transform: translateY(-10px) scale(1.02);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.18),
+        0 0 15px rgba(147, 140, 210, 0.18);
+
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.18),
+            transparent 80%
+        );
+
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    transform: translateX(120%);
 }
 
 .project-card h3 {
@@ -328,55 +365,183 @@ h2 {
 .project-modal {
     position: fixed;
     inset: 0;
-    background: rgba(63, 61, 86, 0.45);
-    backdrop-filter: blur(8px);
+    background: rgba(40, 35, 55, 0.72);
+    backdrop-filter: blur(14px);
 
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    z-index: 1000;
-
     opacity: 0;
-    transition: all 0.3s ease;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
 }
 
 .project-modal.show-modal {
     display: flex;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .close-modal {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 10px;
+    right: 12px;
+
+    width: 36px;
+    height: 36px;
 
     border: none;
     background: transparent;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 2000;
+    padding: 0;
 }
 
 .close-modal img {
-    width: 45px;
-    transition: transform 0.3s ease, filter 0.25s ease;
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .close-modal:hover img {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.08);
     filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.9));
     content: url("assets/images/x_button_hover.png");
 }
 
+/* custom scrollbar */
+
+.modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(147, 140, 210, 0.5);
+    border-radius: 20px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 140, 210, 0.8);
+}
+
+.project-preview {
+    margin-top: 20px;
+}
+
+/* preview image */
+
+.project-preview img {
+    width: 100%;
+    border-radius: 20px;
+
+    border: 2px solid rgba(147, 140, 210, 0.25);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* glass sections */
+
+.project-summary,
+.modal-feature-list {
+    background: transparent;
+    border: none;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 0;
+    margin-top: 0;
+}
+
+/* section titles */
+
+.project-summary h3,
+.modal-feature-list h3 {
+    font-family: "Fredoka", sans-serif;
+
+    color: #938CD2;
+
+    font-size: 1.3rem;
+
+    margin-top: 0;
+    margin-bottom: 15px;
+
+}
+
+/* paragraph text */
+
+.project-summary p,
+.modal-feature-list li {
+    color: #3f3d56;
+
+    line-height: 1.7;
+
+    font-size: 1rem;
+}
+
+/* feature list */
+
+.modal-feature-list ul {
+    padding-left: 22px;
+    margin: 0 auto;
+    width: fit-content;
+
+    text-align: left;
+    line-height: 1.7;
+}
+
+/* tech stack pills */
+
+.modal-tech-stack {
+    display: flex;
+
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.modal-tech-stack span {
+    min-width: 90px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(147, 140, 210, 0.25);
+    border: 1px solid rgba(147, 140, 210, 0.25);
+    color: #938CD2;
+
+    padding: 8px 14px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.modal-tech-stack span:hover {
+    transform: translateY(-3px);
+    background: rgba(147, 140, 210, 0.45);
+}
+
 .modal-content {
     position: relative;
-    z-index: 1001;
-
-    width: min(650px, 90%);
+    width: min(850px, 92%);
     max-height: 80vh;
-    overflow-y: auto;
+    overflow: hidden;
 
-    padding: 35px;
+    z-index: 1001;    
+    padding: 30px;
     border-radius: 28px;
 
     background: rgba(255, 255, 255, 0.78);
@@ -385,7 +550,138 @@ h2 {
 
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
     text-align: center;
+
+    transform: scale(0.92) translateY(15px);
+    transition: all 0.3s ease;
 }
+
+.modal-body {
+    margin-top: 10px;
+    height: calc(80vh - 130px);
+
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 20px 10px 30px;
+}
+
+.modal-header {
+    width: 90%;
+    min-height: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    padding: 8px 18px;
+    margin-bottom: 16px;
+
+    background: rgba(147, 140, 210, 0.25);
+    backdrop-filter: blur(10px);
+
+    border-radius: 18px;
+    border: 1px solid rgba(147, 140, 210, 0.5);
+
+    cursor: grab;
+    user-select: none;
+}
+
+.modal-header h2 { 
+    font-family: "Fredoka", sans-serif;
+    color: #938CD2;
+
+    font-size: 1.8rem;
+
+    margin: 0;
+    line-height: 1;
+}
+
+.modal-header:active {
+    cursor: grabbing;
+}
+
+.modal-content.dragging {
+    transition: none;
+    transform: none;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(147, 140, 210, 0.5);
+    border-radius: 20px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 140, 210, 0.8);
+}
+
+.window-controls {
+    position: absolute;
+    left: 15px;
+
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.pink {
+    background: #ff8ebc;
+
+}
+
+.yellow {
+    background: #ffd36e;
+}
+
+.green {
+    background: #7ee081;
+}
+
+.control:hover {
+    transform: scale(1.15);
+    filter: brightness(1.05);
+
+    transition: all 0.2s ease;
+}
+
+.modal-preview-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.modal-preview-row img {
+    width: min(200px, 100%);
+    border-radius: 18px;
+    border: 2px solid rgba(147, 140, 210, 0.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.modal-tech-stack-title {
+    font-family: "Fredoka", sans-serif;
+    color: #938CD2;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 18px;
+}
+
 
 .modal-content h2 {
     font-family: "Fredoka", sans-serif;
@@ -400,6 +696,16 @@ h2 {
     font-weight: 500;
 }
 
+.project-info-box {
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(147, 140, 210, 0.25);
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
 .project-preview img {
     width: 100%;
     max-height: 260px;
@@ -409,9 +715,14 @@ h2 {
 }
 
 .project-modal.show-modal .modal-content {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
 }
 
+.github-paw-link {
+    display: inline-block;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
 
 .github-paw-link img {
     width: 130px;
@@ -433,3 +744,19 @@ h2 {
         transform: translateY(0);
     }
 }
+
+#mothersday-card {
+    background: rgba(255, 240, 245, 0.45);
+    border: 1px solid rgba(255, 192, 203, 0.35);
+}
+
+#mothersday-card h3 {
+    color: #ff8ebc;
+}
+
+#mothersday-card .project-tech span {
+    background: rgba(255, 192, 203, 0.2);
+    border: 1px solid rgba(255, 192, 203, 0.25);
+    color: #ff8ebc;
+}
+
