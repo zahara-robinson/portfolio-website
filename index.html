@@ -8,6 +8,11 @@
     </head>
     <body>
         <section id="about">
+            
+        <video class="site-bg-video" autoplay muted loop playsinline>
+            <source src="assets/Videos/background.mp4" type="video/mp4">
+        </video>
+
             <div class="about-container">
                 <div class="about-photo">
                     <img src="assets/images/test.jpg" alt="My Photo">
@@ -23,7 +28,13 @@
                     <img class="sleepy-cat" src="assets/images/sleeping cat png.png" alt="Sleeping cat that looks like Minnie">
             </div>
             </div>
+
+            <div class="cloud-transition">
+                <img class="cloud cloud-left" src="assets/images/cloud cloud-left.png" alt="">
+                <img class="cloud cloud-right" src="assets/images/cloud cloud-right.png" alt="">
+            </div>
         </section>
+
         <section id="skills">
             <div class="skills-container">
                 <h2>Skills</h2>
@@ -212,6 +223,97 @@
         </div>
 
         </section>
+
+        <section id="contact">
+
+            <div class="contact-container">
+                <div class="contact-box">
+
+                <h2>Contact Me</h2>
+
+                <p class="contact-subtext">
+                    Currently learning, building projects, and looking for opportunities in front-end development. Feel free to reach out if you'd like to connect, collaborate, or just say hi!
+                </p>
+
+                <form
+                    class="contact-form" 
+                    action="https://formspree.io/f/xaqkgwqn" 
+                    method="POST"
+                >
+
+                    <div class="contact-row">
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            class="contact-input"
+                            required
+                        >
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Your Email"
+                            class="contact-input"
+                            required
+                        >
+
+                    </div>
+
+                    <textarea
+                        name="message"
+                        placeholder="Text your message here..."
+                        class="contact-message"
+                        required
+                    ></textarea>
+
+                    <button
+                        class="contact-send-btn"
+                        type="submit"
+                    >
+
+                        send message
+                    </button>
+
+                    <p class="form-status" id="form-status"></p>
+
+                    <div class="social-links">
+
+                    <a 
+                        href="https://github.com/zahara-robinson"
+                        target="_blank"
+                        data-label="@zahara-robinson"
+                    >
+                        💻
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/zunrah-robinson/"
+                        target="_blank"
+                        data-label="Zunrah Robinson"
+                    >
+                        💼
+                    </a>
+
+                    <a
+                        id="discord-copy-link"
+                        data-label="_.yunoo"
+                    >
+                        💬
+                    </a>
+
+                </div>
+
+            </form>
+
+                </div>
+                
+                </div>
+                </div>
+            </div>
+        </section>
+
         <script src="script.js"></script>
 
     </body>

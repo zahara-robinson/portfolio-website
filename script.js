@@ -109,3 +109,58 @@ document.querySelectorAll(".modal-header").forEach((modalHeader) => {
     modalContent.classList.remove("dragging");
   });
 });
+
+const aboutSection = document.getElementById("about");
+const leftCloud = document.querySelector(".cloud-left");
+const rightCloud = document.querySelector(".cloud-right");
+
+window.addEventListener("scroll", () => {
+  const aboutHeight = aboutSection.offsetHeight;
+
+  let progress = window.scrollY / aboutHeight;
+
+  progress = Math.min(Math.max(progress, 0), 1);
+
+  const moveAmount = progress * 100;
+
+  leftCloud.style.transform = `translateX(-${moveAmount}%)`;
+  rightCloud.style.transform = `translateX(${moveAmount}%)`;
+});
+
+// status //
+
+const contactForm = document.querySelector(".contact-form");
+const formStatus = document.getElementById("form-status");
+
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(contactForm);
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (response.ok) {
+      formStatus.textContent = "Message sent successfully ✨";
+      formStatus.classList.add("success");
+      contactForm.reset();
+    } else {
+      formStatus.textContent = "Oops, something went wrong. Try again 💌";
+      formStatus.classList.add("error");
+    }
+  } catch {
+    formStatus.textContent = "Network error. Try again in a moment 💌";
+    formStatus.classList.add("error");
+  }
+
+  setTimeout(() => {
+    formStatus.textContent = "";
+    formStatus.classList.remove("success", "error");
+  }, 3500);
+});
