@@ -22,6 +22,10 @@ a {
     color: inherit;
 }
 
+html {
+    scroll-behavior: smooth;
+}        
+
 /* About / hero section */
 
 #about {
@@ -1261,4 +1265,93 @@ a {
 
     box-shadow:
         0 15px 35px rgba(226, 114, 150, 0.5);
+}
+
+/* Side Dot Navigation */
+
+.side-nav {
+    position: fixed;
+
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    z-index: 9999;
+}
+
+.side-nav a {
+    position: relative;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: rgba(226, 114, 150, 0.85);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.side-nav a:hover {
+    transform: scale(1.6);
+
+    background: #ffffff;
+}
+
+.side-nav a::after {
+    content: attr(data-label);
+
+    position: absolute;
+
+    right: 28px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    padding: 6px 12px;
+
+    border-radius: 12px;
+
+    background: rgba(35, 35, 35, 0.92);
+
+    color: #E27296;
+
+    font-size: 0.9rem;
+    font-family: "Fredoka", sans-serif;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition: opacity 0.25s ease;
+}
+
+.side-nav a:hover::after {
+    opacity: 1;
+}
+
+/* Scroll Reveal Animation */
+
+.reveal-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-section.reveal-ready {
+    opacity: 0;
+    transform: translateY(45px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal-section.show-section {
+    opacity: 1;
+    transform: translateY(0);
 }

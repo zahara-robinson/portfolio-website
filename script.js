@@ -164,3 +164,31 @@ contactForm.addEventListener("submit", async (e) => {
     formStatus.classList.remove("success", "error");
   }, 3500);
 });
+
+// scroll reveal animations
+
+const revealSections = document.querySelectorAll(".reveal-section");
+
+function revealOnScroll() {
+  revealSections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (sectionTop < windowHeight - 100) {
+      section.classList.add("show-section");
+    }
+  });
+}
+
+revealSections.forEach((section) => {
+  if (section.id !== "about") {
+    section.classList.add("reveal-ready");
+  } else {
+    section.classList.add("show-section");
+  }
+});
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+revealOnScroll();
